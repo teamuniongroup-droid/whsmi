@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Watermelon and Men's Wellness</title>
+  <meta name="description" content="Informational content about watermelon, hydration, and balanced nutrition in the context of men's overall wellness." />
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --bg-soft: #121923;
+      --card: rgba(255,255,255,0.08);
+      --card-border: rgba(255,255,255,0.12);
+      --text: #eef3f8;
+      --muted: #b8c2cf;
+      --accent: #ff5a6f;
+      --accent-2: #ff8e53;
+      --green: #7ddf8a;
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255,90,111,.18), transparent 32%),
+        radial-gradient(circle at top right, rgba(255,142,83,.14), transparent 28%),
+        linear-gradient(180deg, #0a0f14 0%, #0e131a 100%);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(14px);
+      background: rgba(8, 12, 18, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: .2px;
+    }
+
+    .brand-badge {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: var(--shadow);
+      font-size: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .hero {
+      padding: 88px 0 48px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      color: #ffd9df;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(2.2rem, 5vw, 4.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.5vw, 1.12rem);
+      max-width: 700px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 22px;
+      border-radius: 16px;
+      font-weight: 700;
+      transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      box-shadow: 0 16px 36px rgba(255,90,111,.28);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.14);
+      color: var(--text);
+    }
+
+    .hero-card {
+      position: relative;
+      padding: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .fruit {
+      font-size: 78px;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .metric {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .section {
+      padding: 32px 0;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
+      letter-spacing: -0.03em;
+      margin: 0 0 10px;
+    }
+
+    .section-subtitle {
+      margin: 0 0 24px;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      padding: 24px;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .card-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .info-item span {
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    .note {
+      padding: 20px 22px;
+      border-left: 4px solid var(--accent);
+      border-radius: 18px;
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+    }
+
+    .cta {
+      padding: 34px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(255,90,111,.14), rgba(255,142,83,.10));
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .cta h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.7rem, 3vw, 2.7rem);
+    }
+
+    .cta p {
+      margin: 0 auto 20px;
+      max-width: 760px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 28px 0 42px;
+      color: #97a4b4;
+      font-size: 14px;
+    }
+
+    .footer-box {
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .split,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 56px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-card {
+        padding: 22px;
+      }
+
+      .metric-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="brand-badge">🍉</div>
+        <div>Watermelon & Men's Wellness</div>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#nutrients">Nutrients</a>
+        <a href="#context">Context</a>
+        <a href="#video">Video</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Educational content • no promises • informational approach</div>
+          <h1>Watermelon, hydration, and general men's wellness</h1>
+          <p>
+            Watermelon is widely consumed because it is refreshing, light, and naturally rich in water. In discussions about men's health, it is sometimes mentioned in the broader context of balanced nutrition, hydration, and naturally occurring compounds found in fruits and vegetables. This page is purely informational.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://www.youtube.com/watch?v=tJr6Fw30iGg" target="_blank">▶ Watch the Video</a>
+            <a class="btn btn-secondary" href="#about">Read the Article</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="fruit">🍉</div>
+          <h2 style="margin:0 0 10px; font-size:1.6rem;">Quick Overview</h2>
+          <p style="margin:0; color:var(--muted);">
+            Watermelon can be included in a balanced diet as a hydrating fruit that contains naturally occurring nutrients. Its consumption should always be understood within the context of overall lifestyle and nutrition.
+          </p>
+
+          <div class="metric-grid">
+            <div class="metric">
+              <strong>Hydration</strong>
+              <span style="color:var(--muted);">High natural water content.</span>
+            </div>
+            <div class="metric">
+              <strong>Light nutrition</strong>
+              <span style="color:var(--muted);">Often included in balanced meals.</span>
+            </div>
+            <div class="metric">
+              <strong>Diet context</strong>
+              <span style="color:var(--muted);">Most relevant within a healthy diet.</span>
+            </div>
+            <div class="metric">
+              <strong>Responsible information</strong>
+              <span style="color:var(--muted);">No guarantees or claims.</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <h2 class="section-title">Watermelon in the context of nutrition</h2>
+        <p class="section-subtitle">
+          Discussions about men's wellness often emphasize overall lifestyle factors. Watermelon may appear in these discussions because it is a hydrating fruit commonly included in balanced eating patterns.
+        </p>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">💧</div>
+            <h3>Hydration support</h3>
+            <p>
+              Because watermelon contains a high percentage of water, it may contribute to daily hydration when consumed as part of a varied diet.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🥗</div>
+            <h3>Balanced eating</h3>
+            <p>
+              Fruits are generally best understood as part of a healthy eating pattern rather than a standalone solution for complex health concerns.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🧠</div>
+            <h3>Realistic perspective</h3>
+            <p>
+              Men's wellness involves many factors such as sleep, nutrition, physical activity, stress management, and professional guidance when needed.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="nutrients">
+      <div class="container split">
+        <div class="card">
+          <h2 class="section-title" style="font-size:2rem; margin-bottom:12px;">Nutrients often mentioned</h2>
+          <p class="section-subtitle" style="margin-bottom:0; max-width:none;">
+            In nutritional discussions, watermelon is sometimes referenced because it contains water, vitamins, and naturally occurring compounds present in many fruits and vegetables.
+          </p>
+
+          <div class="info-list">
+            <div class="info-item"><span>01</span><div><strong>Water</strong><br>Primary component that contributes to its refreshing quality.</div></div>
+            <div class="info-item"><span>02</span><div><strong>Lycopene</strong><br>A natural pigment found in red-colored fruits.</div></div>
+            <div class="info-item"><span>03</span><div><strong>Citrulline</strong><br>A compound often discussed in nutrition and metabolism contexts.</div></div>
+            <div class="info-item"><span>04</span><div><strong>Vitamins & minerals</strong><br>Part of the nutrient profile of many fruits.</div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="section-title" style="font-size:2rem; margin-bottom:12px;">Keeping proper context</h2>
+          <p class="section-subtitle" style="margin-bottom:0; max-width:none;">
+            Responsible health information avoids exaggeration. No single food determines overall health or performance.
+          </p>
+
+          <div class="info-list">
+            <div class="info-item"><span>✓</span><div>Does not replace professional medical advice.</div></div>
+            <div class="info-item"><span>✓</span><div>Should not be considered a standalone solution for health issues.</div></div>
+            <div class="info-item"><span>✓</span><div>Wellness depends on multiple lifestyle factors.</div></div>
+            <div class="info-item"><span>✓</span><div>Educational information should avoid promises.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="context">
+      <div class="container">
+        <h2 class="section-title">Responsible health communication</h2>
+        <p class="section-subtitle">
+          Informational pages should present nutrition topics in a balanced and responsible way, focusing on education rather than exaggerated claims.
+        </p>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">📚</div>
+            <h3>Educational language</h3>
+            <p>
+              The goal is to provide general information about foods within a healthy lifestyle context.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">⚖️</div>
+            <h3>Balanced tone</h3>
+            <p>
+              Clear and neutral language helps maintain credibility and avoids unrealistic expectations.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🛡️</div>
+            <h3>Professional guidance</h3>
+            <p>
+              Individual health concerns should always be discussed with qualified professionals.
+            </p>
+          </article>
+        </div>
+
+        <div class="note" style="margin-top:22px;">
+          <strong style="color:var(--text);">Important notice:</strong>
+          This page provides educational information only. It does not promise results, improvement, treatment, or guaranteed outcomes.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="video">
+      <div class="container">
+        <div class="cta">
+          <h2>Watch the informational video</h2>
+          <p>
+            You can open the video below for additional context related to this topic.
+          </p>
+          <a class="btn btn-primary" href="https://www.youtube.com/watch?v=tJr6Fw30iGg" target="_blank">Open Video</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-box">
+      <div>© 2026 Informational page about watermelon and men's wellness.</div>
+      <div style="margin-top:8px;">Educational content only. No guarantees, no claims, and not a substitute for professional advice.</div>
+    </div>
+  </footer>
+</body>
+</html>
